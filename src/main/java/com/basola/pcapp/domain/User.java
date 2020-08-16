@@ -12,6 +12,9 @@ public class User {
     private Integer role;
     private Integer loginStatus;
 
+    public User(){
+    }
+    
     public Integer getUserID() {
         return userID;
     }
