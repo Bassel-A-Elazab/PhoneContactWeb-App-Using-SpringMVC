@@ -22,6 +22,14 @@ public class ContactAppDispatcherServletinitalize extends AbstractAnnotationConf
         return new String[]{"/"};
     }
 
+    @Override
+    public void onStartup(ServletContext servletContext) throws ServletException {
+        super.onStartup(servletContext); 
+        //Configure Global task here if required...
+        
+        
+    }
+
     
     
 }
