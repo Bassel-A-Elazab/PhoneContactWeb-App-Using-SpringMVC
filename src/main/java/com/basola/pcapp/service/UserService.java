@@ -1,7 +1,12 @@
 
 package com.basola.pcapp.service;
 
+import com.basola.pcapp.domain.User;
 
-public class UserService {
+
+public interface UserService {
+    
+    public void register(User u);
+    
     
 }
