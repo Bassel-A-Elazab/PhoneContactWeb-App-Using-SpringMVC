@@ -49,8 +49,8 @@ public class ContactDAOImpl extends BaseDAO implements ContactDAO {
     @Override
     public void delete(Contact c) {
 
-       this.delete(c.getContactID());
-       
+        this.delete(c.getContactID());
+
     }
 
     @Override
@@ -62,23 +62,26 @@ public class ContactDAOImpl extends BaseDAO implements ContactDAO {
 
     @Override
     public Contact findById(Integer contactId) {
-        
+
         String sql = "SELECT contactID, userID, name, phone, email, address, remark FROM contact WHERE contactID=?";
         return getJdbcTemplate().queryForObject(sql, new ContactRowMapper(), contactId);
-        
+
     }
 
     @Override
     public List<Contact> findAll() {
-        
+
         String sql = "SELECT contactID, userID, name, phone, email, address, remark FROM contact";
         return getJdbcTemplate().query(sql, new ContactRowMapper());
-         
+
     }
 
     @Override
     public List<Contact> findByProperty(String propName, Object propValue) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        String sql = "SELECT contactID, userID, name, phone, email, address, remark FROM contact WHERE " + propName + "=?";
+        return getJdbcTemplate().query(sql, new ContactRowMapper(), propValue);
+
     }
 
 }
