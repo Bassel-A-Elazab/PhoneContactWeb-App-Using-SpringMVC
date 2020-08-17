@@ -62,7 +62,7 @@ public class UserDAOImpl extends BaseDAO implements UserDAO {
     
     @Override
     public void delete(Integer userId) {
-        String sql = "DELETE FORM user where userID = ?";
+        String sql = "DELETE FROM user where userID = ?";
         getJdbcTemplate().update(sql, userId);
     }
     
