@@ -3,6 +3,7 @@ package com.basola.pcapp.test;
 import com.basola.pcapp.config.SpringRootConfig;
 import com.basola.pcapp.dao.UserDAO;
 import com.basola.pcapp.domain.User;
+import java.util.List;
 import javax.faces.application.Application;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -25,6 +26,13 @@ public class TestUserDAOQuery {
         System.out.println(u.getLoginName());
         System.out.println(u.getLoginStatus());
         System.out.println(u.getRole());
+        
+        // Find All Recorded
+        
+        List<User> u1 = userDAO.findAll();
+        for(User user : u1){
+            System.out.println("User id : "+user.getUserID() + " Name : "+user.getName());
+        }
 
     }
 }
