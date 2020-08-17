@@ -15,7 +15,7 @@ public class ContactDAOImpl extends BaseDAO implements ContactDAO {
     @Override
     public void save(Contact c) {
         
-        String sql = "INSERT INTO contact(userId, name, phone, email, address, remark) VALUES(:userId, :name, :phone, :email, :address, :remark)";
+        String sql = "INSERT INTO contact(userID, name, phone, email, address, remark) VALUES(:userId, :name, :phone, :email, :address, :remark)";
         Map m = new HashMap();
         m.put("userId", c.getUserID());
         m.put("name", c.getName());
