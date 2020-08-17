@@ -33,6 +33,12 @@ public class TestUserDAOQuery {
         for(User user : u1){
             System.out.println("User id : "+user.getUserID() + " Name : "+user.getName());
         }
-
+        
+        // Find By Property
+        System.out.println("Test By select with specific property");
+        List<User> u2 = userDAO.findByProperty("role", 2);
+        for(User user1 : u2){
+            System.out.println("User id : "+user1.getUserID() + " Name : "+user1.getName());
+        }
     }
 }
