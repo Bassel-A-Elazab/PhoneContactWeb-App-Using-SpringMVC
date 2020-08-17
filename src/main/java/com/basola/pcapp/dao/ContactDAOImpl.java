@@ -47,12 +47,14 @@ public class ContactDAOImpl extends BaseDAO implements ContactDAO {
 
     @Override
     public void delete(Contact u) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
     }
 
     @Override
     public void delete(Integer contactId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        String sql = "DELETE FROM contact WHERE contactID=?";
+        getJdbcTemplate().update(sql, contactId);
     }
 
     @Override
