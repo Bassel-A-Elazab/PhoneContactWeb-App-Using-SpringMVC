@@ -46,8 +46,10 @@ public class ContactDAOImpl extends BaseDAO implements ContactDAO {
     }
 
     @Override
-    public void delete(Contact u) {
+    public void delete(Contact c) {
 
+       this.delete(c.getContactID());
+       
     }
 
     @Override
