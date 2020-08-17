@@ -78,7 +78,9 @@ public class UserDAOImpl extends BaseDAO implements UserDAO {
     
     @Override
     public List<User> findAll() {
-        return null;
+        
+        String sql = "SELECT userID, name, phone, email, address, loginName, role, loginStatus FROM user";
+        return getJdbcTemplate().query(sql, new UserRowMapper());
         
     }
     
