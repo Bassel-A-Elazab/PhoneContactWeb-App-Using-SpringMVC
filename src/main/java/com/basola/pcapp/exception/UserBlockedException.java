@@ -1,7 +1,12 @@
-
 package com.basola.pcapp.exception;
 
+public class UserBlockedException extends Exception {
 
-public class UserBlockedException {
-    
+    public UserBlockedException() {
+
+    }
+
+    public UserBlockedException(String errDesc) {
+        super(errDesc);
+    }
 }
