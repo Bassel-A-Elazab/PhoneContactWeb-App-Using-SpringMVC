@@ -1,6 +1,7 @@
 package com.basola.pcapp.dao;
 
 import com.basola.pcapp.domain.Contact;
+import com.basola.pcapp.rm.ContactRowMapper;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -61,7 +62,10 @@ public class ContactDAOImpl extends BaseDAO implements ContactDAO {
 
     @Override
     public Contact findById(Integer contactId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        String sql = "SELECT contactID, userID, name, phone, email, address, remark FROM contact WHERE contactID=?";
+        return getJdbcTemplate().queryForObject(sql, new ContactRowMapper(), contactId);
+        
     }
 
     @Override
