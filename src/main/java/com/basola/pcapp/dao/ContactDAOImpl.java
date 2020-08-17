@@ -70,7 +70,10 @@ public class ContactDAOImpl extends BaseDAO implements ContactDAO {
 
     @Override
     public List<Contact> findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        String sql = "SELECT contactID, userID, name, phone, email, address, remark FROM contact";
+        return getJdbcTemplate().query(sql, new ContactRowMapper());
+         
     }
 
     @Override
