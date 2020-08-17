@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan(basePackages = {"com.basola"})
+//@ComponentScan(basePackages = {"com.basola"})
 
 
 public class SpringRootConfig {
@@ -24,7 +24,7 @@ public class SpringRootConfig {
         ds.setMaxTotal(2);
         ds.setInitialSize(1);
         ds.setTestOnBorrow(true);
-        ds.setValidationQuery("SELECT 1");
+        //ds.setValidationQuery("SELECT 1");
         ds.setDefaultAutoCommit(true);
         
         return ds;
