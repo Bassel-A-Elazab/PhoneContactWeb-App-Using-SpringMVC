@@ -36,8 +36,13 @@ public class UserDAOImpl extends BaseDAO implements UserDAO {
 
     @Override
     public void update(User u) {
-        String sql = "UPDATE user SET name = :name,phone = :phone, address = :address,role = :role,loginStatus = :loginStatus"+
-                "WHERE userID = :UserId";
+        String sql = "UPDATE user SET name = :name,"
+                + "phone = :phone, "
+                + "email = :email,"
+                + "address = :address,"
+                + "role = :role,"
+                + "loginStatus = :loginStatus"
+                +" WHERE userID = :UserId";
         Map m = new HashMap();
         m.put("name", u.getName());
         m.put("phone", u.getPhone());
