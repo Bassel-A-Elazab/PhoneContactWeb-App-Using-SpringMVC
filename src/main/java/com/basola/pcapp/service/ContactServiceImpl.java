@@ -38,12 +38,12 @@ public class ContactServiceImpl extends BaseDAO implements ContactService {
     
     @Override
     public Contact findById(Integer contactId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return contactDAO.findById(contactId);
     }
     
     @Override
     public List<Contact> findUserContact(Integer userId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return contactDAO.findByProperty("userId", userId);
     }
     
     @Override
