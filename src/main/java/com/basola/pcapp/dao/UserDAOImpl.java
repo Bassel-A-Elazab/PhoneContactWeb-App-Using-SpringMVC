@@ -1,6 +1,7 @@
 package com.basola.pcapp.dao;
 
 import com.basola.pcapp.domain.User;
+import com.basola.pcapp.rm.UserRowMapper;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -68,8 +69,11 @@ public class UserDAOImpl extends BaseDAO implements UserDAO {
     
     @Override
     public User findById(Integer userId) {
-        return null;
         
+        String sql = "SELECT userID, name, phone, email, address, loginName, role, loginStatus FROM user WHERE userID=?";
+        User u = getJdbcTemplate().queryForObject(sql, new UserRowMapper(), userId);
+        
+        return u;
     }
     
     @Override
