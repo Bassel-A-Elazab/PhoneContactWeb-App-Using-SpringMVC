@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan(basePackages = {"com.basola.pcapp.dao"})
+@ComponentScan(basePackages = {"com.basola.pcapp.dao","com.basola.pcapp.service"})
 
 
 public class SpringRootConfig {
