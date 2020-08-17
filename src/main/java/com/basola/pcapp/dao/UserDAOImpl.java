@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class UserDAOImpl extends BaseDAO implements UserDAO {
-
+    
     @Override
     public void save(User u) {
         String sql = "INSERT INTO user(name, phone, email, address, loginName, password, role, loginStatus)"
@@ -33,7 +33,7 @@ public class UserDAOImpl extends BaseDAO implements UserDAO {
         Integer userId = kh.getKey().intValue();
         u.setUserID(userId);
     }
-
+    
     @Override
     public void update(User u) {
         String sql = "UPDATE user SET name = :name,"
@@ -42,7 +42,7 @@ public class UserDAOImpl extends BaseDAO implements UserDAO {
                 + "address = :address,"
                 + "role = :role,"
                 + "loginStatus = :loginStatus"
-                +" WHERE userID = :UserId";
+                + " WHERE userID = :UserId";
         Map m = new HashMap();
         m.put("name", u.getName());
         m.put("phone", u.getPhone());
@@ -50,37 +50,38 @@ public class UserDAOImpl extends BaseDAO implements UserDAO {
         m.put("address", u.getAddress());
         m.put("role", u.getRole());
         m.put("loginStatus", u.getLoginStatus());
-        m.put("UserId",u.getUserID());
+        m.put("UserId", u.getUserID());
         
         getNamedParameterJdbcTemplate().update(sql, m);
     }
-
+    
     @Override
     public void delete(User u) {
-
+        this.delete(u.getUserID());
     }
-
+    
     @Override
     public void delete(Integer userId) {
-        
+        String sql = "DELETE FORM user where userID = ?";
+        getJdbcTemplate().update(sql, userId);
     }
-
+    
     @Override
     public User findById(Integer userId) {
         return null;
-
+        
     }
-
+    
     @Override
     public List<User> findAll() {
         return null;
-
+        
     }
-
+    
     @Override
     public List<User> findByProperty(String propName, Object propValue) {
         return null;
-
+        
     }
-
+    
 }
