@@ -14,4 +14,8 @@ public interface UserService {
     
     public List<User> getuserList();
     
+    public void changeLoginStatus(Integer userId, Integer loginStatus);
+    
+    
+    
 }
