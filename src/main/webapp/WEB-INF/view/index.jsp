@@ -28,7 +28,7 @@
             <tr>
                 <td height="25px">
                     <%-- Menu --%>
-                    <%--<jsp:include page="include/menu.jsp"/>--%>
+                    <jsp:include page="include/menu.jsp"/>
                 </td>
             </tr>
             <tr>
