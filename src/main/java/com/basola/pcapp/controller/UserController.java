@@ -11,4 +11,11 @@ public class UserController {
     public String index(){
         return "index";
     }
+    
+     @RequestMapping(value="user/dashboard")
+    public String userDashboard(){
+        return "dashboard_user";
+    }
+    
+    
 }
