@@ -1,7 +1,8 @@
-package com.basola.pcapp.service;
+package com.basola.pcapp.test;
 
 import com.basola.pcapp.config.SpringRootConfig;
 import com.basola.pcapp.domain.User;
+import com.basola.pcapp.service.UserService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
