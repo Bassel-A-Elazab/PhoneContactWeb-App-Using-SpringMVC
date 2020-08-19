@@ -27,7 +27,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String handleLogin(@ModelAttribute("command") LoginCommand cmd, Model m) {
+    public String handleLogin(@ModelAttribute("command") LoginCommand cmd, Model m, HttpSession session) {
         try {
             User loggedInUser = userService.login(cmd.getLoginName(), cmd.getPassword());
             if (loggedInUser == null) {
@@ -36,8 +36,11 @@ public class UserController {
                 return "index";
             } else {
                 if (loggedInUser.getRole().equals(UserService.ROLE_ADMIN)) {
+                    
+                    addUserInSession(loggedInUser, session);
                     return "redirect:admin/dashboard";
                 } else if (loggedInUser.getRole().equals(UserService.ROLE_USER)) {
+                    addUserInSession(loggedInUser, session);
                     return "redirect:user/dashboard";
                 } else {
                     m.addAttribute("err", "Invalid User Role");
