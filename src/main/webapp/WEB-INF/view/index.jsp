@@ -28,7 +28,7 @@
             <tr>
                 <td height="25px">
                     <%-- Menu --%>
-                   <%--<jsp:include page="include/menu.jsp"/>--%>
+                    <%--<jsp:include page="include/menu.jsp"/>--%>
                 </td>
             </tr>
             <tr>
@@ -38,6 +38,11 @@
                     <c:if test="${err!=null}">
                         <p class="error">${err}</p>
                     </c:if>
+                        
+                    <c:if test="${param.act eq 'log'}">
+                        <p class="success">Logout Successfully! Thanks for using contact application.</p>
+                    </c:if>
+
                     <s:url var="url_login"  value="/login"/>
                     <f:form action="${url_login}" modelAttribute="command">
                         <table border="1">
