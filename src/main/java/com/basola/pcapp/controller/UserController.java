@@ -11,12 +11,12 @@ public class UserController {
         return "index";
     }
 
-    @RequestMapping(value = "user/dashboard")
+    @RequestMapping(value = "/user/dashboard")
     public String userDashboard() {
         return "dashboard_user";
     }
 
-    @RequestMapping(value = "admin/dashboard")
+    @RequestMapping(value = "/admin/dashboard")
     public String adminDashboard() {
         return "dashboard_admin";
     }
