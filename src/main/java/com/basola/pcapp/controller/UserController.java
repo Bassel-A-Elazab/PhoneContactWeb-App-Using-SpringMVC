@@ -6,6 +6,7 @@ import com.basola.pcapp.exception.UserBlockedException;
 import com.basola.pcapp.service.UserService;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -60,4 +61,9 @@ public class UserController {
         return "dashboard_admin";
     }
 
+    private void addUserInSession(User u, HttpSession session){
+        session.setAttribute("user", u);
+        session.setAttribute("userId", u.getUserID());
+        session.setAttribute("role", u.getRole());
+    }
 }
