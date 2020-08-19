@@ -9,7 +9,6 @@
 /home/basola/Documents/PhoneContact/src/main/java/com/basola/pcapp/exception/UserBlockedException.java
 /home/basola/Documents/PhoneContact/src/main/java/com/basola/pcapp/controller/TestController.java
 /home/basola/Documents/PhoneContact/src/main/java/com/basola/pcapp/domain/Contact.java
-/home/basola/Documents/PhoneContact/src/main/java/com/basola/pcapp/service/TestUserService.java
 /home/basola/Documents/PhoneContact/src/main/java/com/basola/pcapp/service/ContactServiceImpl.java
 /home/basola/Documents/PhoneContact/src/main/java/com/basola/pcapp/service/UserServiceImpl.java
 /home/basola/Documents/PhoneContact/src/main/java/com/basola/pcapp/controller/UserController.java
