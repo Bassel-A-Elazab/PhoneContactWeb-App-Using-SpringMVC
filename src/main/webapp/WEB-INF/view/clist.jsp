@@ -29,7 +29,9 @@
                 <td height="350px" valign="top" width="100%">
                     <%-- Page Content Area--%>
                     <h3>Contact List</h3>
-
+                    <c:if test="${param.act eq 'sv'}">
+                        <p class="success">Contact Saved Successfully</p>
+                    </c:if>
                     <c:if test="${param.act eq 'del'}">
                         <p class="success">Contact Deleted Successfully</p>
                     </c:if>
