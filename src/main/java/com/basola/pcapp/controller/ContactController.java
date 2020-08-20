@@ -34,7 +34,7 @@ public class ContactController {
     @RequestMapping(value = "/user/save_contact")
     public String saveOrUpdateContact(@ModelAttribute("command") Contact c, Model m, HttpSession session) {
         Integer contactId = (Integer) session.getAttribute("aContactId");
-        if (contactId == null) {
+        if (contactId == null) {        //save contact
             try {
                 Integer userId = (Integer) session.getAttribute("userId");
                 c.setUserID(userId);    //FK
@@ -43,6 +43,17 @@ public class ContactController {
             } catch (Exception ex) {
                 ex.printStackTrace();
                 m.addAttribute("err", "Failed To Save Contact");
+                return "contact_form";
+            }
+        }else{
+            try{
+                c.setContactID(contactId);
+                contactService.update(c);
+                session.removeAttribute("aContact");
+                return "redirest:clist?act=ed";
+            }catch(Exception e){
+                e.printStackTrace();
+                m.addAttribute("err","Failed To Edit Contact");
                 return "contact_form";
             }
         }
