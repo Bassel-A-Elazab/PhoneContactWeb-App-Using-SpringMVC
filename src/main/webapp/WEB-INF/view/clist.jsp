@@ -55,7 +55,11 @@
                                     <td>${c.phone}</td>
                                     <td>${c.email}</td>
                                     <td>${c.address}</td>
-                                    <td>${c.remark}</td>    
+                                    <td>${c.remark}</td>  
+                                    <s:url var="url_del" value="/user/del_contact">
+                                        <s:param name="cid" value="${c.contactID}"/>
+                                    </s:url>
+                                    <td>< Edit | <a href="${url_del}">Delete</a></td>
                                 </tr> 
                             </c:forEach>
                         </table>
