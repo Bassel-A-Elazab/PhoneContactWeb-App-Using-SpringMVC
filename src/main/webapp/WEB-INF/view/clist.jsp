@@ -29,40 +29,44 @@
                 <td height="350px" valign="top" width="100%">
                     <%-- Page Content Area--%>
                     <h3>Contact List</h3>
-                        <table border="1" cellpadding="3"  width="100%">
+
+                    <c:if test="${param.act eq 'del'}">
+                        <p class="success">Contact Deleted Successfully</p>
+                    </c:if>
+                    <table border="1" cellpadding="3"  width="100%">
+                        <tr>
+                            <th>SELECT</th>
+                            <th>CID</th>
+                            <th>NAME</th>
+                            <th>PHONE</th>
+                            <th>EMAIL</th>
+                            <th>ADDRESS</th>
+                            <th>REMARK</th>
+                            <th>ACTION</th>
+                        </tr>
+
+                        <c:if test="${empty contactList}">
                             <tr>
-                                <th>SELECT</th>
-                                <th>CID</th>
-                                <th>NAME</th>
-                                <th>PHONE</th>
-                                <th>EMAIL</th>
-                                <th>ADDRESS</th>
-                                <th>REMARK</th>
-                                <th>ACTION</th>
+                                <td align="center" colspan="8" class="error">No Records Present</td>
                             </tr>
+                        </c:if>
 
-                            <c:if test="${empty contactList}">
-                                <tr>
-                                    <td align="center" colspan="8" class="error">No Records Present</td>
-                                </tr>
-                            </c:if>
-
-                            <c:forEach var="c" items="${contactList}" varStatus="st">
-                                <tr>
-                                    <td>${st.count}</td>
-                                    <td>${c.contactID}</td>
-                                    <td>${c.name}</td>
-                                    <td>${c.phone}</td>
-                                    <td>${c.email}</td>
-                                    <td>${c.address}</td>
-                                    <td>${c.remark}</td>  
-                                    <s:url var="url_del" value="/user/del_contact">
-                                        <s:param name="cid" value="${c.contactID}"/>
-                                    </s:url>
-                                    <td>< Edit | <a href="${url_del}">Delete</a></td>
-                                </tr> 
-                            </c:forEach>
-                        </table>
+                        <c:forEach var="c" items="${contactList}" varStatus="st">
+                            <tr>
+                                <td>${st.count}</td>
+                                <td>${c.contactID}</td>
+                                <td>${c.name}</td>
+                                <td>${c.phone}</td>
+                                <td>${c.email}</td>
+                                <td>${c.address}</td>
+                                <td>${c.remark}</td>  
+                                <s:url var="url_del" value="/user/del_contact">
+                                    <s:param name="cid" value="${c.contactID}"/>
+                                </s:url>
+                                <td>< Edit | <a href="${url_del}">Delete</a></td>
+                            </tr> 
+                        </c:forEach>
+                    </table>
                     </form>     
                 </td>
             </tr>

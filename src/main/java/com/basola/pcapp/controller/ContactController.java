@@ -47,7 +47,7 @@ public class ContactController {
     }
     
     @RequestMapping(value="/user/del_contact")
-    public String deleteContaact(@RequestParam("cid") Integer contactId){
+    public String deleteContact(@RequestParam("cid") Integer contactId){
         contactService.delete(contactId);
         return "redirect:clist?act=del";
     }
