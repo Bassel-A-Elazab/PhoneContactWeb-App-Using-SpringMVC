@@ -65,7 +65,13 @@
                                 <s:url var="url_del" value="/user/del_contact">
                                     <s:param name="cid" value="${c.contactID}"/>
                                 </s:url>
-                                <td>< Edit | <a href="${url_del}">Delete</a></td>
+
+                                <s:url var="url_edit" value="/user/edit_contact">
+                                    <s:param name="cid" value="${c.contactID}"/>
+                                </s:url> 
+
+
+                                <td><a href="${url_edit}">Edit</a> | <a href="${url_del}">Delete</a></td>
                             </tr> 
                         </c:forEach>
                     </table>
