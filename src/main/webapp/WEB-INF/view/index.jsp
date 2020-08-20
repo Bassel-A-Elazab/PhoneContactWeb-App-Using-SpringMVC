@@ -38,9 +38,13 @@
                     <c:if test="${err!=null}">
                         <p class="error">${err}</p>
                     </c:if>
-                        
+
                     <c:if test="${param.act eq 'log'}">
                         <p class="success">Logout Successfully! Thanks for using contact application.</p>
+                    </c:if>
+
+                    <c:if test="${param.act eq 'reg'}">
+                        <p class="success">User Registered Successfully. Please login</p>
                     </c:if>
 
                     <s:url var="url_login"  value="/login"/>
