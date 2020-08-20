@@ -25,6 +25,13 @@ public class ContactController {
         return "contact_form";
     }
     
+    @RequestMapping(value="/user/edit_contact")
+    public String prepareEditForm(Model m, HttpSession session, @RequestParam("cid") Integer contactId){
+        session.setAttribute("aContactId", contactId);
+        Contact c = contactService.findById(contactId);
+        m.addAttribute("command",c);
+        return "contact_form";
+    }
     @RequestMapping(value="/user/save_contact")
     public String saveContact(@ModelAttribute("command") Contact c, Model m, HttpSession session){
         try{
