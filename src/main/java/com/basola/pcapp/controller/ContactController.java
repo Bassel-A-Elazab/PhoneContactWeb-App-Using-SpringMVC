@@ -39,7 +39,9 @@ public class ContactController {
     }
     
     @RequestMapping(value="/user/clist")
-    public String contactList(Model m){
+    public String contactList(Model m, HttpSession session){
+        Integer userId = (Integer) session.getAttribute("userId");
+        m.addAttribute("contactList", contactService.findUserContact(userId));
         return "clist";
     }
 }
