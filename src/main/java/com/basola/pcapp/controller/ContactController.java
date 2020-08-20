@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -43,5 +44,11 @@ public class ContactController {
         Integer userId = (Integer) session.getAttribute("userId");
         m.addAttribute("contactList", contactService.findUserContact(userId));
         return "clist";
+    }
+    
+    @RequestMapping(value="/user/del_contact")
+    public String deleteContaact(@RequestParam("cid") Integer contactId){
+        contactService.delete(contactId);
+        return "redirect:clist?act=del";
     }
 }
