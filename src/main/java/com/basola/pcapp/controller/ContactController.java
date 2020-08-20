@@ -33,7 +33,7 @@ public class ContactController {
         return "contact_form";
     }
     @RequestMapping(value="/user/save_contact")
-    public String saveContact(@ModelAttribute("command") Contact c, Model m, HttpSession session){
+    public String saveOrUpdateContact(@ModelAttribute("command") Contact c, Model m, HttpSession session){
         try{
             Integer userId = (Integer) session.getAttribute("userId");
             c.setUserID(userId);    //FK
