@@ -68,7 +68,14 @@ public class UserController {
         return "reg_form";
     }
     
-    
+    @RequestMapping(value="/register")
+    public String registerUser(@ModelAttribute("command") UserCommand cmd, Model m){
+        User user = cmd.getUser();
+        user.setRole(UserService.ROLE_USER);
+        user.setLoginStatus(UserService.LOGIN_SATUS_ACTIVE);
+        userService.register(user);
+        return "redirect:index>act=reg";
+    }
     @RequestMapping(value = "/user/dashboard")
     public String userDashboard() {
         return "dashboard_user";
