@@ -24,7 +24,7 @@ public class ContactController {
         return "contact_form";
     }
     
-    @RequestMapping(value="/user/savve_contact")
+    @RequestMapping(value="/user/save_contact")
     public String saveContact(@ModelAttribute("command") Contact c, Model m, HttpSession session){
         try{
             Integer userId = (Integer) session.getAttribute("userId");
