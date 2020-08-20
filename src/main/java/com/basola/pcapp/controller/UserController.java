@@ -1,6 +1,7 @@
 package com.basola.pcapp.controller;
 
 import com.basola.pcapp.command.LoginCommand;
+import com.basola.pcapp.command.UserCommand;
 import com.basola.pcapp.domain.User;
 import com.basola.pcapp.exception.UserBlockedException;
 import com.basola.pcapp.service.UserService;
@@ -59,11 +60,20 @@ public class UserController {
         session.invalidate();
         return "redirect:index?act=log";
     }
+    
+    @RequestMapping(value = "/reg_form")
+    public String registrationForm(Model m){
+        UserCommand cmd = new UserCommand();
+        m.addAttribute("command",cmd);
+        return "reg_form";
+    }
+    
+    
     @RequestMapping(value = "/user/dashboard")
     public String userDashboard() {
         return "dashboard_user";
     }
-
+    
     @RequestMapping(value = "/admin/dashboard")
     public String adminDashboard() {
         return "dashboard_admin";
