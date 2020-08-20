@@ -9,6 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -70,11 +71,17 @@ public class UserController {
     
     @RequestMapping(value="/register")
     public String registerUser(@ModelAttribute("command") UserCommand cmd, Model m){
+        try{
         User user = cmd.getUser();
         user.setRole(UserService.ROLE_USER);
         user.setLoginStatus(UserService.LOGIN_SATUS_ACTIVE);
         userService.register(user);
         return "redirect:index?act=reg";
+        }catch(DuplicateKeyException e){
+            e.printStackTrace();
+            m.addAttribute("err","UserName is already taken. Please choose another LoginName");
+            return "reg_form";
+        }
     }
     @RequestMapping(value = "/user/dashboard")
     public String userDashboard() {
