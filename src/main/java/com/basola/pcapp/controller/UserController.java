@@ -74,7 +74,7 @@ public class UserController {
         user.setRole(UserService.ROLE_USER);
         user.setLoginStatus(UserService.LOGIN_SATUS_ACTIVE);
         userService.register(user);
-        return "redirect:index>act=reg";
+        return "redirect:index?act=reg";
     }
     @RequestMapping(value = "/user/dashboard")
     public String userDashboard() {
