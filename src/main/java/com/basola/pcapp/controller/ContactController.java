@@ -37,4 +37,9 @@ public class ContactController {
             return "contact_form";
         }
     }
+    
+    @RequestMapping(value="/user/clist")
+    public String contactList(Model m){
+        return "clist";
+    }
 }
