@@ -49,8 +49,8 @@ public class ContactController {
             try{
                 c.setContactID(contactId);
                 contactService.update(c);
-                session.removeAttribute("aContact");
-                return "redirest:clist?act=ed";
+                session.removeAttribute("aContactId");
+                return "redirect:clist?act=ed";
             }catch(Exception e){
                 e.printStackTrace();
                 m.addAttribute("err","Failed To Edit Contact");

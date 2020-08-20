@@ -38,7 +38,7 @@ public class ContactDAOImpl extends BaseDAO implements ContactDAO {
 
         String sql = "UPDATE contact SET name=:name, phone=:phone, email=:email, address=:address, remark=:remark WHERE contactID=:contactID";
         Map m = new HashMap();
-        m.put("contactId", c.getContactID());
+        m.put("contactID", c.getContactID());
         m.put("name", c.getName());
         m.put("phone", c.getPhone());
         m.put("email", c.getEmail());
