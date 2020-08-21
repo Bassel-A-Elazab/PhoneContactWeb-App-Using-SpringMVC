@@ -77,4 +77,10 @@ public class ContactController {
         contactService.delete(contactId);
         return "redirect:clist?act=del";
     }
+    
+    @RequestMapping(value="/user/bulk_cdelete")
+    public String deleteBulkContact(@RequestParam("cid") Integer [] contactIds){
+        contactService.delete(contactIds);
+        return "redirect:clist?act=del";
+    }
 }
