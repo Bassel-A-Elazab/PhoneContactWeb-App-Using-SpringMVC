@@ -98,4 +98,10 @@ public class UserController {
         session.setAttribute("userId", u.getUserID());
         session.setAttribute("role", u.getRole());
     }
+    
+    @RequestMapping(value="/admin/users")
+    public String getUserList(Model m){
+        m.addAttribute("userList",userService.getuserList());
+        return "users";
+    }
 }
