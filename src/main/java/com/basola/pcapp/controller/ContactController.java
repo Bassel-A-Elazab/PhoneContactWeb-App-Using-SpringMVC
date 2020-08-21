@@ -66,6 +66,12 @@ public class ContactController {
         return "clist";
     }
 
+    @RequestMapping(value="/user/contact_search")
+    public String contactSearch(Model m, HttpSession session, @RequestParam("freeText") String freeText){
+        Integer userId = (Integer) session.getAttribute("userId");
+        m.addAttribute("contactList", contactService.findUserContact(userId, freeText));
+        return "clist";
+    }
     @RequestMapping(value = "/user/del_contact")
     public String deleteContact(@RequestParam("cid") Integer contactId) {
         contactService.delete(contactId);
