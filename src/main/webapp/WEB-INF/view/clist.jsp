@@ -35,6 +35,19 @@
                     <c:if test="${param.act eq 'del'}">
                         <p class="success">Contact Deleted Successfully</p>
                     </c:if>
+                        
+                        
+                    <table width="100%">
+                        <tr>
+                            <td align="right" >
+                                <form action="<s:url value="/user/contact_search"/>">
+                                    <input type="text" name="freeText" value="${param.freeText}" placeholder="Enter Text To Search">
+                                    <button>Find</button>
+                                </form>
+                            </td>                           
+                        </tr>
+                    </table>
+                                    
                     <table border="1" cellpadding="3"  width="100%">
                         <tr>
                             <th>SELECT</th>
