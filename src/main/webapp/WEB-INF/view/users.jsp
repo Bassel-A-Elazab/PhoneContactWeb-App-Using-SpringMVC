@@ -68,6 +68,9 @@
                                         <option value="1">Active</option>
                                         <option value="2">Block</option>
                                     </select>   
+                                        <script>
+                                            $('#id_${u.userID}').val(${u.loginStatus});
+                                        </script>
                                 </td>
                             </tr>   
                         </c:forEach>
