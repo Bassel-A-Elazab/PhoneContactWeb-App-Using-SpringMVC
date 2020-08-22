@@ -49,8 +49,13 @@
                                 <td>${u.email}</td>
                                 <td>${u.address}</td>
                                 <td>${u.loginName}</td>
-                                <td>${u.loginStatus}</td>
-                            </tr>
+                                <td>
+                                    <select id="id_${u.userID}" onchange="changeStatus(${u.userID}, $(this).val())">
+                                        <option value="1">Active</option>
+                                        <option value="2">Block</option>
+                                    </select>   
+                                </td>
+                            </tr>   
                         </c:forEach>
                     </table>
 
