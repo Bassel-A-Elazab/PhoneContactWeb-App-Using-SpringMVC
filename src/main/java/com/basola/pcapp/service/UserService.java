@@ -24,4 +24,6 @@ public interface UserService {
     
     public Boolean isUserNameExist(String username);
     
+    public void delete(Integer userId);
+    
 }

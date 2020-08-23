@@ -95,7 +95,7 @@ public class UserController {
     public String adminDashboard() {
         return "dashboard_admin";
     }
-
+    
     private void addUserInSession(User u, HttpSession session) {
         session.setAttribute("user", u);
         session.setAttribute("userId", u.getUserID());
