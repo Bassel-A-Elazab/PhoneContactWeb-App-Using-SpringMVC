@@ -17,10 +17,15 @@ public class ContactController {
     private ContactService contactService;
 
     @RequestMapping(value = "/user/contact_form")
-    public String contactForm(Model m) {
-        Contact contact = new Contact();
-        m.addAttribute("command", contact);
-        return "contact_form";
+    public String contactForm(Model m, HttpSession session) {
+        Integer userId = (Integer) session.getAttribute("userId");
+        if (userId == null) {
+            return "redirect:/?act=nl";
+        } else {
+            Contact contact = new Contact();
+            m.addAttribute("command", contact);
+            return "contact_form";
+        }
     }
 
     @RequestMapping(value = "/user/edit_contact")
