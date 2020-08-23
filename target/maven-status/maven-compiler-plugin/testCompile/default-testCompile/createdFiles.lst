@@ -1,0 +1,6 @@
+com/basola/pcapp/test/TestUserDAOSave.class
+com/basola/pcapp/test/TestDataSource.class
+com/basola/pcapp/test/TestDataSourceUpdate.class
+com/basola/pcapp/test/TestUserService.class
+com/basola/pcapp/test/TestUserDelete.class
+com/basola/pcapp/test/TestUserDAOQuery.class
