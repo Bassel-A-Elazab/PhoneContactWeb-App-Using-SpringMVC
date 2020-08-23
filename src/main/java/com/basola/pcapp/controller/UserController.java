@@ -106,7 +106,7 @@ public class UserController {
     public String getUserList(Model m, HttpSession session) {
         Integer userId = (Integer) session.getAttribute("userId");
         if (userId == null) {
-            return "redirect:/";
+            return "redirect:/?act=nl";
         } else {
             m.addAttribute("userList", userService.getuserList());
             return "users";
