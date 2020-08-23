@@ -45,15 +45,15 @@ public class ContactController {
                 m.addAttribute("err", "Failed To Save Contact");
                 return "contact_form";
             }
-        }else{
-            try{
+        } else {
+            try {
                 c.setContactID(contactId);
                 contactService.update(c);
                 session.removeAttribute("aContactId");
                 return "redirect:clist?act=ed";
-            }catch(Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
-                m.addAttribute("err","Failed To Edit Contact");
+                m.addAttribute("err", "Failed To Edit Contact");
                 return "contact_form";
             }
         }
@@ -62,24 +62,29 @@ public class ContactController {
     @RequestMapping(value = "/user/clist")
     public String contactList(Model m, HttpSession session) {
         Integer userId = (Integer) session.getAttribute("userId");
-        m.addAttribute("contactList", contactService.findUserContact(userId));
-        return "clist";
+        if (userId == null) {
+            return "redirect:/?act=nl";
+        } else {
+            m.addAttribute("contactList", contactService.findUserContact(userId));
+            return "clist";
+        }
     }
 
-    @RequestMapping(value="/user/contact_search")
-    public String contactSearch(Model m, HttpSession session, @RequestParam("freeText") String freeText){
+    @RequestMapping(value = "/user/contact_search")
+    public String contactSearch(Model m, HttpSession session, @RequestParam("freeText") String freeText) {
         Integer userId = (Integer) session.getAttribute("userId");
         m.addAttribute("contactList", contactService.findUserContact(userId, freeText));
         return "clist";
     }
+
     @RequestMapping(value = "/user/del_contact")
     public String deleteContact(@RequestParam("cid") Integer contactId) {
         contactService.delete(contactId);
         return "redirect:clist?act=del";
     }
-    
-    @RequestMapping(value="/user/bulk_cdelete")
-    public String deleteBulkContact(@RequestParam("cid") Integer [] contactIds){
+
+    @RequestMapping(value = "/user/bulk_cdelete")
+    public String deleteBulkContact(@RequestParam("cid") Integer[] contactIds) {
         contactService.delete(contactIds);
         return "redirect:clist?act=del";
     }
