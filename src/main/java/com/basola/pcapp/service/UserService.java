@@ -26,4 +26,6 @@ public interface UserService {
     
     public void delete(Integer userId);
     
+    public void delete(Integer[] contactId);
+    
 }
