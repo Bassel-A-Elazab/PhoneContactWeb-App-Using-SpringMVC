@@ -47,6 +47,9 @@
                         <p class="success">User Registered Successfully. Please login</p>
                     </c:if>
 
+                    <c:if test="${param.act eq 'nl'}">
+                        <p class="success">Please, Login to see users.</p>
+                    </c:if>
                     <s:url var="url_login"  value="/login"/>
                     <f:form action="${url_login}" modelAttribute="command">
                         <table border="1">
