@@ -57,6 +57,11 @@
                             <th>USERNAME</th>
                             <th>STATUS</th>
                         </tr>
+                        <c:if test="${empty userList}">
+                            <tr>
+                                <td align="center" colspan="8" class="error">No Records Present</td>
+                            </tr>
+                        </c:if>
                         <c:forEach var="u" items="${userList}" varStatus="st">
                             <tr>
                                 <td>${st.count}</td>
