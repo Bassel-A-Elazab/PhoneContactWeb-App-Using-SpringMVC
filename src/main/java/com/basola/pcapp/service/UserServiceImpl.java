@@ -5,6 +5,7 @@ import com.basola.pcapp.dao.UserDAO;
 import com.basola.pcapp.domain.User;
 import com.basola.pcapp.exception.UserBlockedException;
 import com.basola.pcapp.rm.UserRowMapper;
+import com.basola.pcapp.util.StringUtil;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -73,6 +74,13 @@ public class UserServiceImpl extends BaseDAO implements UserService {
     @Override
     public void delete(Integer userId) {
         userDAO.delete(userId);
+    }
+
+    @Override
+    public void delete(Integer[] userId) {
+        String ids = StringUtil.toCommaSeparatedString(userId);
+        String sql = "DELETE FROM user WHERE userID IN(" + ids + ")";
+        getJdbcTemplate().update(sql);
     }
 
 }
