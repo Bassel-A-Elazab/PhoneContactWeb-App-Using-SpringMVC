@@ -15,6 +15,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class UserController {
@@ -103,5 +105,17 @@ public class UserController {
     public String getUserList(Model m){
         m.addAttribute("userList",userService.getuserList());
         return "users";
+    }
+    
+    @RequestMapping(value="/admin/change_status")
+    @ResponseBody
+    public String changeLoginStatus(@RequestParam Integer userID, @RequestParam Integer loginStatus){
+        try{
+            userService.changeLoginStatus(userID, loginStatus);
+            return "Success: Status Changed";
+        }catch(Exception e){
+            e.printStackTrace();
+            return "Error: Unable To Change Status";
+        }
     }
 }
