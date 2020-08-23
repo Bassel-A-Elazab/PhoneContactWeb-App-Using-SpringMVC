@@ -42,6 +42,9 @@
             <tr>
                 <td height="350px" valign="top">
                     <%-- Page Content Area--%>
+                    <c:if test="${param.act eq 'del'}">
+                        <p class="success">User Deleted Successfully</p>
+                    </c:if>
                     <h3>User List</h3>
                     <table border="1">
                         <tr>
@@ -73,7 +76,7 @@
                                     </script>
                                 </td>
                                 <s:url var="url_del" value="/admin/del_user">
-                                    <s:param name="uid" value="${c.userID}"/>
+                                    <s:param name="uid" value="${u.userID}"/>
                                 </s:url>
                                 <td><a href="${url_del}">Delete</a></td>
                             </tr>   
