@@ -103,9 +103,14 @@ public class UserController {
     }
 
     @RequestMapping(value = "/admin/users")
-    public String getUserList(Model m) {
-        m.addAttribute("userList", userService.getuserList());
-        return "users";
+    public String getUserList(Model m, HttpSession session) {
+        Integer userId = (Integer) session.getAttribute("userId");
+        if (userId == null) {
+            return "redirect:/";
+        } else {
+            m.addAttribute("userList", userService.getuserList());
+            return "users";
+        }
     }
 
     @RequestMapping(value = "/admin/change_status")

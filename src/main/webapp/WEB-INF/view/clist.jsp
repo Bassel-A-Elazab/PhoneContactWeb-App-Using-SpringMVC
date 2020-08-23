@@ -48,7 +48,7 @@
                         </tr>
                     </table>
                     <form action="<s:url value="/user/bulk_cdelete"/>"> 
-                         <button>Delete Selected Records</button> <br/><br/>
+                        <button>Delete Selected Records</button> <br/><br/>
                         <table border="1" cellpadding="3"  width="100%">
                             <tr>
                                 <th>SELECT</th>
@@ -60,7 +60,6 @@
                                 <th>REMARK</th>
                                 <th>ACTION</th>
                             </tr>
-
                             <c:if test="${empty contactList}">
                                 <tr>
                                     <td align="center" colspan="8" class="error">No Records Present</td>
@@ -84,7 +83,7 @@
                                         <s:param name="cid" value="${c.contactID}"/>
                                     </s:url> 
 
-
+                                    
                                     <td><a href="${url_edit}">Edit</a> | <a href="${url_del}">Delete</a></td>
                                 </tr> 
                             </c:forEach>
