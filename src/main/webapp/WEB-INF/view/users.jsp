@@ -12,12 +12,12 @@
         <s:url var="url_jqlib" value="/static/js/jquery-3.5.1.min.js" />
         <script src="${url_jqlib}"></script>
         <script>
-            
-            function changeStatus(uid,lstatus){
+
+            function changeStatus(uid, lstatus) {
                 $.ajax({
-                    url:'change_status',
-                    data:{userID:uid, loginStatus:lstatus},
-                    success: function (data){
+                    url: 'change_status',
+                    data: {userID: uid, loginStatus: lstatus},
+                    success: function (data) {
                         alert(data);
                     }
                 });
@@ -68,10 +68,14 @@
                                         <option value="1">Active</option>
                                         <option value="2">Block</option>
                                     </select>   
-                                        <script>
-                                            $('#id_${u.userID}').val(${u.loginStatus});
-                                        </script>
+                                    <script>
+                                        $('#id_${u.userID}').val(${u.loginStatus});
+                                    </script>
                                 </td>
+                                <s:url var="url_del" value="/admin/del_user">
+                                    <s:param name="uid" value="${c.userID}"/>
+                                </s:url>
+                                <td><a href="${url_del}">Delete</a></td>
                             </tr>   
                         </c:forEach>
                     </table>
