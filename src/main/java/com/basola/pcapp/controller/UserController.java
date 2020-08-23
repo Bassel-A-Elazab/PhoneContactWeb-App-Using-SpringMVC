@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class UserController {
-    
+
     @Autowired
     private UserService userService;
 
@@ -40,7 +40,7 @@ public class UserController {
                 return "index";
             } else {
                 if (loggedInUser.getRole().equals(UserService.ROLE_ADMIN)) {
-                    
+
                     addUserInSession(loggedInUser, session);
                     return "redirect:admin/dashboard";
                 } else if (loggedInUser.getRole().equals(UserService.ROLE_USER)) {
@@ -58,64 +58,75 @@ public class UserController {
 
     }
 
-    @RequestMapping(value="logout")
-    public String logout(HttpSession session){
+    @RequestMapping(value = "logout")
+    public String logout(HttpSession session) {
         session.invalidate();
         return "redirect:index?act=log";
     }
-    
+
     @RequestMapping(value = "/reg_form")
-    public String registrationForm(Model m){
+    public String registrationForm(Model m) {
         UserCommand cmd = new UserCommand();
-        m.addAttribute("command",cmd);
+        m.addAttribute("command", cmd);
         return "reg_form";
     }
-    
-    @RequestMapping(value="/register")
-    public String registerUser(@ModelAttribute("command") UserCommand cmd, Model m){
-        try{
-        User user = cmd.getUser();
-        user.setRole(UserService.ROLE_USER);
-        user.setLoginStatus(UserService.LOGIN_SATUS_ACTIVE);
-        userService.register(user);
-        return "redirect:index?act=reg";
-        }catch(DuplicateKeyException e){
+
+    @RequestMapping(value = "/register")
+    public String registerUser(@ModelAttribute("command") UserCommand cmd, Model m) {
+        try {
+            User user = cmd.getUser();
+            user.setRole(UserService.ROLE_USER);
+            user.setLoginStatus(UserService.LOGIN_SATUS_ACTIVE);
+            userService.register(user);
+            return "redirect:index?act=reg";
+        } catch (DuplicateKeyException e) {
             e.printStackTrace();
-            m.addAttribute("err","UserName is already taken. Please choose another LoginName");
+            m.addAttribute("err", "UserName is already taken. Please choose another LoginName");
             return "reg_form";
         }
     }
+
     @RequestMapping(value = "/user/dashboard")
     public String userDashboard() {
         return "dashboard_user";
     }
-    
+
     @RequestMapping(value = "/admin/dashboard")
     public String adminDashboard() {
         return "dashboard_admin";
     }
 
-    private void addUserInSession(User u, HttpSession session){
+    private void addUserInSession(User u, HttpSession session) {
         session.setAttribute("user", u);
         session.setAttribute("userId", u.getUserID());
         session.setAttribute("role", u.getRole());
     }
-    
-    @RequestMapping(value="/admin/users")
-    public String getUserList(Model m){
-        m.addAttribute("userList",userService.getuserList());
+
+    @RequestMapping(value = "/admin/users")
+    public String getUserList(Model m) {
+        m.addAttribute("userList", userService.getuserList());
         return "users";
     }
-    
-    @RequestMapping(value="/admin/change_status")
+
+    @RequestMapping(value = "/admin/change_status")
     @ResponseBody
-    public String changeLoginStatus(@RequestParam Integer userID, @RequestParam Integer loginStatus){
-        try{
+    public String changeLoginStatus(@RequestParam Integer userID, @RequestParam Integer loginStatus) {
+        try {
             userService.changeLoginStatus(userID, loginStatus);
             return "Success: Status Changed";
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return "Error: Unable To Change Status";
+        }
+    }
+
+    @RequestMapping(value = "/check_avail")
+    @ResponseBody
+    public String checkAvailbitily(@RequestParam String username) {
+        if (userService.isUserNameExist(username)) {
+            return "This username is already taken. Choose another name";
+        } else {
+            return "Yes! You can take this";
         }
     }
 }
