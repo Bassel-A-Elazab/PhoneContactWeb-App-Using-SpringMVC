@@ -70,4 +70,9 @@ public class UserServiceImpl extends BaseDAO implements UserService {
         }
     }
 
+    @Override
+    public void delete(Integer userId) {
+        userDAO.delete(userId);
+    }
+
 }
