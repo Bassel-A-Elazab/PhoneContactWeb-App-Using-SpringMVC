@@ -11,7 +11,19 @@
         <link href="${url_css}" rel="stylesheet" type="text/css"/>  
         <s:url var="url_jqlib" value="/static/js/jquery-3.5.1.min.js" />
         <script src="${url_jqlib}"></script>
-
+        <script>
+            $(document).ready(function () {
+                $("#id_check_avail").click(function () {
+                    $.ajax({
+                        url: 'check_avail',
+                        data : { username: $("#id_username").val()} ,
+                        success: function (data) {
+                            $("#id_res_div").html(data);
+                        }
+                    });
+                });
+            });
+        </script>
     </head>
     <s:url var="url_bg" value="/static/images/bg.jpg"/>
     <body background="${url_bg}">
