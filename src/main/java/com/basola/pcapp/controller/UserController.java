@@ -96,6 +96,12 @@ public class UserController {
         return "dashboard_admin";
     }
     
+    @RequestMapping(value="/admin/del_user")
+    public String deleteUser(@RequestParam("uid") Integer userId){
+        userService.delete(userId);
+        return "redirect:users?act=del";
+    }
+    
     private void addUserInSession(User u, HttpSession session) {
         session.setAttribute("user", u);
         session.setAttribute("userId", u.getUserID());
